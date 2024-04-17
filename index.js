@@ -63,19 +63,19 @@ function quickSort(arr) {
     return [...quickSort(left), pivot, ...quickSort(right)];
 }
 
-function readAndSort(filename, sortFunction) {
+function readAndSort(filename, sortFunction, sortFunctionName) {
     fs.readFile(filename, 'utf8', (err, data) => {
         if (err) {
-            console.error('Error reading file:', err.message);
+            console.error('Erreur de lecture du fichier:', err.message);
             return;
         }
         const arr = data.split(' ').map(Number).filter(n => !isNaN(n));
         if (arr.length === 0) {
-            console.error('Error: No numbers found in the file');
+            console.error('Erreur : Aucun nombre trouvé dans le fichier');
             return;
         }
         const sortedArr = sortFunction(arr);
-        console.log('Sorted Array:', sortedArr);
+        console.log(`${sortFunctionName}: ${sortedArr.length} comparaisons -`, sortedArr);
     });
 }
 
@@ -86,7 +86,7 @@ if (!filename) {
 }
 
 
-readAndSort(filename, bubbleSort);
-readAndSort(filename, insertionSort);
-readAndSort(filename, selectionSort);
-readAndSort(filename, quickSort);
+readAndSort(filename, bubbleSort, 'Tri à bulles');
+readAndSort(filename, insertionSort, 'Tri par insertion');
+readAndSort(filename, selectionSort, 'Tri par sélection');
+readAndSort(filename, quickSort, 'Tri rapide');
