@@ -85,7 +85,7 @@ if (!filename) {
     process.exit(1);
 }
 
-// Replace 'bubbleSort' with the desired sorting function
+
 readAndSort(filename, bubbleSort);
 readAndSort(filename, insertionSort);
 readAndSort(filename, selectionSort);
